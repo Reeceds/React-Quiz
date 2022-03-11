@@ -207,4 +207,5 @@ export default function Quiz() {
             <Button className={'js-end-quiz-btn hide'} text={'End quiz'} click={() => endQuiz()} />
         </div>
     );
+    
 }
