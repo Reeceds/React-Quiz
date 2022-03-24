@@ -181,8 +181,9 @@ export default function Quiz() {
 
 
     return (
-        <div className="App">
+        <div className="quiz-page">
             <h1>Quiz</h1>
+
             {/* Quiz section */}
             <div className='quiz-section js-quiz-section hide'>
                 <h2>Question: {queNum + 1}</h2>
@@ -197,7 +198,7 @@ export default function Quiz() {
                 <Button className={'js-next-btn hide'} text={'Next'} click={() => getNextQue()} />
             </div>
             
-            {/* End of quiz section */}
+            {/* After quiz options section */}
             <div className='end-quiz-section js-end-quiz-section hide'>
                 <h2>You scored: {correctScore}/{queNum + 1}</h2>
                 <Button className={'js-new-quiz-btn'} text={'New quiz'} click={() => newQuiz()} />

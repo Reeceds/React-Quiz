@@ -1,36 +1,29 @@
-import './App.css';
-import _global from './partials/_global.scss';
+import './partials/_global.scss';
 import Quiz from './pages/Quiz';
-import firebase from 'firebase/compat/app';
-import { GoogleAuthProvider, getAuth, signInWithRedirect   } from "firebase/auth";
+import Header from './components/Header';
+import LogIn from './pages/LogIn';
+
+import { useState, useEffect } from 'react';
+
+import { Container } from 'react-bootstrap';
+
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 
 
 function App() {
 
-  const loginWithGoogle = () => {
-    const provider = new GoogleAuthProvider();
-    const auth = getAuth();
-
-    signInWithRedirect (auth, provider)
-      .then((result) => {
-        // This gives you a Google Access Token. You can use it to access Google APIs.
-        console.log(result)
-        const credential = GoogleAuthProvider.credentialFromResult(result);
-        const token = credential.accessToken;
-      }).catch((error) => {
-        console.log(error.code, error.message)
-        // The email of the user's account used.
-        const email = error.email;
-        // The AuthCredential type that was used.
-        const credential = GoogleAuthProvider.credentialFromError(error);
-    });
-  }
-  
+  const [isAuth, setIsAuth] = useState(false);
 
   return(
-    <button onClick={loginWithGoogle}>Login with Google</button>
-    // <Quiz/>
-
+    <Router>
+      <Header setIsAuth={setIsAuth} />
+      <Container>
+        <Routes>
+          <Route path='/' element={<Quiz />}/>
+          <Route path='/login' element={<LogIn setIsAuth={setIsAuth} />}/>
+        </Routes>
+      </Container>
+    </Router>
   )
 }
 
