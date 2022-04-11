@@ -30,3 +30,9 @@ export const provider = new GoogleAuthProvider();
 // https://www.youtube.com/watch?v=jCY6DH8F4oc&ab_channel=PedroTech
 // https://www.youtube.com/watch?v=zL0dKETbCNE&t=11s&ab_channel=PedroTech
 // https://www.youtube.com/watch?v=PKwu15ldZ7k&t=2866s&ab_channel=WebDevSimplified
+
+// https://www.youtube.com/watch?v=hUhWtYXgg0I&ab_channel=CodingWithAdam
+// https://css-tricks.com/user-registration-authentication-firebase-react/
+
+// https://cloud.google.com/firestore/docs/query-data/queries#in_and_array-contains-any
+// https://stackoverflow.com/questions/48541270/how-to-add-document-with-custom-id-to-firestore

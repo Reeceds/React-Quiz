@@ -1,11 +1,13 @@
 import React from 'react'
 import 'font-awesome/css/font-awesome.min.css';
 import { useState, useEffect } from 'react';
+import { useNavigate } from "react-router-dom";
 import Button from '../components/Button';
 import AnswerButton from '../components/AnswerButton';
 
 
 export default function Quiz() {
+    
     let [data, setData] = useState([]);
     let [runApi, setRunApi] = useState(true);
 
@@ -16,6 +18,12 @@ export default function Quiz() {
     
     let [correctScore, setCorrectScore] = useState(0);
     let [incorrectScore, setIncorrectScore] = useState(0);
+
+    let navigate = useNavigate();
+
+    // Local storage varaibles
+    let userAuth = localStorage.getItem('isAuth');
+    let userAlias = localStorage.getItem('alias');
 
 
 
@@ -69,6 +77,15 @@ export default function Quiz() {
         return array;
     };
 
+    // Navigate to the login page
+    const goToLogin = () => {
+        navigate('/login');
+    }
+
+    const saveScore = () => {
+        console.log('save score')
+    }
+
 
     // Updates the quesiton/answers hooks with the quiz data
     const populateQuiz = () => {
@@ -114,8 +131,13 @@ export default function Quiz() {
     };
     
     
-    // Unhides the quiz
+    // Unhides the quiz if user has entered an alias
     const startQuiz = () => {
+        // If no alias, redirect to details page
+        if(userAuth === 'true' && (userAlias === null || userAlias === undefined || userAlias === '')){
+            navigate('/personalDetails');
+        }
+        
         // Unhide quiz section
         document.querySelector('.js-quiz-section').classList.remove("hide");
         // Hide start quiz button
@@ -132,6 +154,9 @@ export default function Quiz() {
         document.querySelector('.js-end-quiz-btn').classList.add("hide");
         // Show end quiz score section
         document.querySelector('.js-end-quiz-section').classList.remove("hide");
+
+        // Add last score to local storage
+        localStorage.setItem('lastScore', correctScore);
     }
 
 
@@ -202,9 +227,14 @@ export default function Quiz() {
             <div className='end-quiz-section js-end-quiz-section hide'>
                 <h2>You scored: {correctScore}/{queNum + 1}</h2>
                 <Button className={'js-new-quiz-btn'} text={'New quiz'} click={() => newQuiz()} />
+
+                {userAuth === 'true' ? <Button text={'Save score'} click={() => saveScore()} /> : ``}
             </div>
 
             <Button className={'js-start-btn'} text={'Start quiz'} click={() => startQuiz()} />
+
+            {userAuth === null ? <Button text={'Log in to save your score'} click={() => goToLogin()} /> : ``}
+            
             <Button className={'js-end-quiz-btn hide'} text={'End quiz'} click={() => endQuiz()} />
         </div>
     );
