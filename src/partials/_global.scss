@@ -1,5 +1,13 @@
 @import "~bootstrap/scss/bootstrap";
 
+table, th, td {
+    border:1px solid black;
+}
+
+th, td {
+    padding: 7px 10px;
+}
+
 .quiz-page {
     display: flex;
     flex-direction: column;

@@ -1,6 +1,5 @@
-import React from "react";
+import { React, useState, useEffect } from "react";
 import "font-awesome/css/font-awesome.min.css";
-import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Button from "../components/Button";
 import AnswerButton from "../components/AnswerButton";
@@ -28,13 +27,14 @@ export default function Quiz() {
     let [correctScore, setCorrectScore] = useState(0);
     let [incorrectScore, setIncorrectScore] = useState(0);
 
+    let [userUid, setUserUid] = useState();
+
     let navigate = useNavigate();
     const auth = getAuth();
 
     // Local storage varaibles
     let userAuth = localStorage.getItem("isAuth");
     let userAlias = localStorage.getItem("alias");
-    let latestScore = localStorage.getItem("lastScore");
 
     useEffect(() => {
         const getData = async () => {
@@ -59,13 +59,13 @@ export default function Quiz() {
         populateQuiz();
     }, [data]);
 
-    // useEffect(() => {
-    //     onAuthStateChanged(auth, (user) => {
-    //         if (user) {
-    //             const uid = user.uid;
-    //         }
-    //     });
-    // }, []);
+    useEffect(() => {
+        onAuthStateChanged(auth, (user) => {
+            if (user) {
+                setUserUid(user.uid);
+            }
+        });
+    }, []);
 
     // Parse html entities
     const htmlDecode = (input) => {
@@ -94,22 +94,38 @@ export default function Quiz() {
         return array;
     };
 
+    // Resets the state for the quiz questions api and the scores
+    const resetQuiz = () => {
+        setRunApi(runApi ? false : true);
+        setQueNum(0);
+        setCorrectScore(0);
+        setIncorrectScore(0);
+    };
+
     // Navigate to the login page
     const goToLogin = () => {
         navigate("/login");
     };
 
-    const saveScore = () => {
-        onAuthStateChanged(auth, (user) => {
-            if (user) {
-                const uid = user.uid;
-
-                addDoc(collection(db, "users", uid, "scores"), {
-                    date: serverTimestamp(),
-                    score: latestScore,
-                });
-            }
+    // Saves the score to the users doc in the db and exits the quiz
+    const saveAndExit = async () => {
+        const q = query(collection(db, "users"), where("id", "==", userUid));
+        const querySnapshot = await getDocs(q);
+        
+        querySnapshot.forEach((doc) => {
+            addDoc(collection(db, "users", doc.id, "scores"), {
+                date: new Date().toLocaleDateString('en-UK', {
+                    year: 'numeric',
+                    month: '2-digit',
+                    day: '2-digit',
+                  }),
+                score: correctScore,
+                alias: doc.data().alias
+            });
         });
+
+        resetQuiz();
+        exitQuiz();
     };
 
     // Updates the quesiton/answers hooks with the quiz data
@@ -143,10 +159,7 @@ export default function Quiz() {
 
     // Runs the API to refresh the set of the quesitons and resets question number/score
     const newQuiz = () => {
-        setRunApi(runApi ? false : true);
-        setQueNum(0);
-        setCorrectScore(0);
-        setIncorrectScore(0);
+        resetQuiz();
 
         // Hide end quiz section
         document.querySelector(".js-end-quiz-section").classList.add("hide");
@@ -166,8 +179,8 @@ export default function Quiz() {
 
         // Unhide quiz section
         document.querySelector(".js-quiz-section").classList.remove("hide");
-        // Hide start quiz button
-        document.querySelector(".js-start-btn").classList.add("hide");
+        // Hide quiz landing section
+        document.querySelector(".js-quiz-landing-section").classList.add("hide");
         // Hide end quiz score section
         document.querySelector(".js-end-quiz-section").classList.add("hide");
     };
@@ -179,9 +192,6 @@ export default function Quiz() {
         document.querySelector(".js-end-quiz-btn").classList.add("hide");
         // Show end quiz score section
         document.querySelector(".js-end-quiz-section").classList.remove("hide");
-
-        // Add last score to local storage
-        localStorage.setItem("lastScore", correctScore);
     };
 
     // Adds 1 to quesiton number and calls function to pupulate question/answers
@@ -221,6 +231,15 @@ export default function Quiz() {
             // Unhide end quiz button
             document.querySelector(".js-end-quiz-btn").classList.remove("hide");
         }
+    };
+
+    // Exits the quiz and returns the landing screen
+    const exitQuiz = () => {
+        resetQuiz();
+        // Hide end quiz section
+        document.querySelector(".js-end-quiz-section").classList.add("hide");
+        // Unhide quiz landing section
+        document.querySelector(".js-quiz-landing-section").classList.remove("hide");
     };
 
     return (
@@ -266,26 +285,36 @@ export default function Quiz() {
                 />
 
                 {userAuth === "true" ? (
-                    <Button text={"Save score"} click={() => saveScore()} />
+                    <Button text={"Save score and exit"} click={() => saveAndExit()} />
                 ) : (
                     ``
                 )}
+
+                <Button
+                    className={"js-exit-quiz-btn"}
+                    text={"Exit quiz"}
+                    click={() => exitQuiz()}
+                />
             </div>
 
-            <Button
-                className={"js-start-btn"}
-                text={"Start quiz"}
-                click={() => startQuiz()}
-            />
-
-            {userAuth === null ? (
+            {/* Quiz landing section */}
+            <div className="js-quiz-landing-section">
                 <Button
+                    className={"js-start-btn"}
+                    text={"Start quiz"}
+                    click={() => startQuiz()}
+                    />
+
+                {userAuth === null ? (
+                    <Button
+                    className={"js-login-prompt-btn"}
                     text={"Log in to save your score"}
                     click={() => goToLogin()}
-                />
-            ) : (
-                ``
-            )}
+                    />
+                    ) : (
+                        ``
+                    )}
+            </div>
 
             <Button
                 className={"js-end-quiz-btn hide"}

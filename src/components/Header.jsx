@@ -34,8 +34,8 @@ export default function Header({ setIsAuth }) {
                         :
                         <NavDropdown title="My Account" id="basic-nav-dropdown">
                             <NavDropdown.Item as={Link} to='/personalDetails'>Personal Details</NavDropdown.Item>
-                            <NavDropdown.Item href="#">My Scores</NavDropdown.Item>
-                            <NavDropdown.Item href="#">Leaderboard</NavDropdown.Item>
+                            <NavDropdown.Item as={Link} to='/myScores'>My Scores</NavDropdown.Item>
+                            <NavDropdown.Item as={Link} to='/leaderboard'>Leaderboard</NavDropdown.Item>
                             <NavDropdown.Divider />
                             <NavDropdown.Item onClick={logOutUser} className='js-logout'>Log Out</NavDropdown.Item>
                         </NavDropdown>}

@@ -50,6 +50,11 @@ export default function LogIn({ setIsAuth }) {
 
     const loginWithGoogle = () => {
 
+        // Allow user to select Google account istead of auto loggin in using saved token
+        provider.setCustomParameters({
+            'prompt': 'select_account'
+        });
+
         signInWithPopup (auth, provider)
         .then((result) => {
             // console.log(result)

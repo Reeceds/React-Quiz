@@ -57,7 +57,6 @@ export default function PersonalDetails() {
 
         await updateDoc(userDocRef, {
             alias: details.alias,
-            timestamp: serverTimestamp(),
         });
 
         localStorage.setItem("alias", details.alias);
