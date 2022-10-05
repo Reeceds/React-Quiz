@@ -1,0 +1,142 @@
+@import "../../partials/mixins";
+
+body {
+    background-color: #ffecc9;
+}
+
+.quiz {
+    &_heading {
+        margin-bottom: 50px;
+    }
+
+    &_page {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    &_section {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        max-width: 900px;
+        margin-bottom: 50px;
+    }
+
+    &_landing-section {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        button {
+            margin-bottom: 50px;
+        }
+    }
+
+    &_question {
+        height: 200px;
+        width: 100%;
+        // max-width: 900px;
+        margin-bottom: 50px;
+        font-size: 1.5rem;
+        line-height: 1.4;
+        border: 2px solid black;
+        padding: 50px;
+        position: relative;
+        background-color: #fff;
+
+        &::before {
+            content: "";
+            position: absolute;
+            height: inherit;
+            width: 100%;
+            background-color: plum;
+            z-index: -1;
+            top: 13px;
+            left: 17px;
+        }
+
+        @include tablet {
+            height: 240px;
+        }
+    }
+
+    &_action-btns-container {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+    }
+
+    &_active-score {
+        margin-bottom: 50px;
+    }
+
+    &_end {
+        &-section {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+            button {
+                margin-bottom: 50px;
+            }
+        }
+
+        &-final-score {
+            margin-bottom: 30px;
+        }
+    }
+}
+
+.answer {
+    &_section {
+        display: flex;
+        // flex-direction: column;
+        margin-bottom: 50px;
+        align-items: center;
+        // max-width: 300px;
+        width: 100%;
+        justify-content: center;
+        flex-wrap: wrap;
+        height: 280px;
+
+        @include mobile {
+            height: unset;
+        }
+    }
+
+    &_btn {
+        width: 46%;
+        margin: 2%;
+        height: 100px;
+
+        @include mobile {
+            width: 100%;
+            height: unset;
+        }
+
+        &-disable {
+            pointer-events: none;
+        }
+    }
+
+    &_correct {
+        background-color: green;
+        opacity: 0.5;
+        color: white;
+    }
+
+    &_wrong {
+        background-color: red;
+        opacity: 0.5;
+        color: white;
+    }
+
+    &_selected {
+        opacity: 1 !important;
+    }
+}

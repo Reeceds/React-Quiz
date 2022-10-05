@@ -2,16 +2,8 @@ import { React, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { Form, Button, Row, Col } from "react-bootstrap";
 
-import { db } from "../config/firebase-config";
-import {
-    collection,
-    query,
-    where,
-    getDocs,
-    updateDoc,
-    doc,
-    serverTimestamp,
-} from "firebase/firestore";
+import { db } from "../../config/firebase-config";
+import { collection, query, where, getDocs, updateDoc, doc, serverTimestamp } from "firebase/firestore";
 
 export default function PersonalDetails() {
     const [details, setDetails] = useState({
@@ -41,10 +33,7 @@ export default function PersonalDetails() {
 
     // Updates users alias in db/local storage
     const updateUserAlias = async (userEmail) => {
-        const q = query(
-            collection(db, "users"),
-            where("email", "==", userEmail)
-        );
+        const q = query(collection(db, "users"), where("email", "==", userEmail));
         const querySnapshot = await getDocs(q);
 
         let userDocId;
@@ -87,33 +76,18 @@ export default function PersonalDetails() {
                 <Form noValidate validated={validated} onSubmit={handleSubmit}>
                     <Form.Group className="mb-3">
                         <Form.Label>Email address</Form.Label>
-                        <Form.Control
-                            type="text"
-                            placeholder={details.email || ""}
-                            disabled
-                        />
-                        <Form.Text className="text-muted">
-                            {" "}
-                            We'll never share your email with anyone else.
-                        </Form.Text>
+                        <Form.Control type="text" placeholder={details.email || ""} disabled />
+                        <Form.Text className="text-muted"> We'll never share your email with anyone else.</Form.Text>
                     </Form.Group>
 
                     <Form.Group className="mb-3">
                         <Form.Label>First Name</Form.Label>
-                        <Form.Control
-                            type="text"
-                            placeholder={details.firstName || ""}
-                            disabled
-                        />
+                        <Form.Control type="text" placeholder={details.firstName || ""} disabled />
                     </Form.Group>
 
                     <Form.Group className="mb-3">
                         <Form.Label>Last Name</Form.Label>
-                        <Form.Control
-                            type="text"
-                            placeholder={details.lastName || ""}
-                            disabled
-                        />
+                        <Form.Control type="text" placeholder={details.lastName || ""} disabled />
                     </Form.Group>
 
                     {/* <Form.Group className="mb-3">
@@ -137,13 +111,8 @@ export default function PersonalDetails() {
                                 })
                             }
                         />
-                        <Form.Control.Feedback type="invalid">
-                            Please enter an alias.
-                        </Form.Control.Feedback>
-                        <Form.Text className="text-muted">
-                            {" "}
-                            Your quiz alias must be three characters long.
-                        </Form.Text>
+                        <Form.Control.Feedback type="invalid">Please enter an alias.</Form.Control.Feedback>
+                        <Form.Text className="text-muted"> Your quiz alias must be three characters long.</Form.Text>
                     </Form.Group>
 
                     <Button variant="primary" type="submit">

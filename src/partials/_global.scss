@@ -1,60 +1,25 @@
 @import "~bootstrap/scss/bootstrap";
+@import "mixins";
 
-table, th, td {
-    border:1px solid black;
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+Mono:wght@100;300;400;500;600&display=swap");
+
+* {
+    font-family: "Noto Sans Mono", monospace;
 }
 
-th, td {
+table,
+th,
+td {
+    border: 1px solid black;
+}
+
+th,
+td {
     padding: 7px 10px;
 }
 
-.quiz-page {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-
-.quiz-section {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.answers-section {
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 20px;
-    align-items: center;
-    max-width: 300px;
-    width: 100%;
-    justify-content: center;
-}
-
-.answer-btn {
-    width: 100%;
-    margin-bottom: 10px;
-    padding: 10px 20px;
-}
-
-.correct-answer {
-    background-color: green;
-    opacity: 0.5;
-    color: white;
-}
-
-.wrong-answer {
-    background-color: red;
-    opacity: 0.5;
-    color: white;
-}
-
-.selected-answer {
-    opacity: 1 !important;
-}
-
 .hide {
-    display: none;
+    display: none !important;
 }
 
 .main-section {
