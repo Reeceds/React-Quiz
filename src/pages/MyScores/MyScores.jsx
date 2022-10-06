@@ -5,6 +5,7 @@ import { collection, query, where, getDocs, doc } from "firebase/firestore";
 
 export default function MyScores() {
     let [scores, setScores] = useState([]);
+    let [tableHeight, setTableHeight] = useState();
 
     useEffect(() => {
         onAuthStateChanged(auth, (user) => {
@@ -13,6 +14,10 @@ export default function MyScores() {
             }
         });
     }, []);
+
+    useEffect(() => {
+        setTableHeight(document.querySelector("table").offsetHeight);
+    }, [scores]);
 
     // Gets all scores of the logged in user
     const getScores = async (userId) => {
@@ -39,7 +44,7 @@ export default function MyScores() {
 
     return (
         <div>
-            <table>
+            <table style={{ height: tableHeight }}>
                 <thead>
                     <tr>
                         <th>Date</th>

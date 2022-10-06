@@ -1,0 +1,23 @@
+@import "../../partials/mixins";
+
+form {
+    background-color: #fff;
+    border: 1px solid black;
+    padding: 30px;
+    position: relative;
+
+    &::before {
+        content: "";
+        position: absolute;
+        height: inherit;
+        width: 100%;
+        background-color: plum;
+        z-index: -1;
+        top: 13px;
+        left: 17px;
+    }
+
+    @include tablet {
+        width: 95%;
+    }
+}

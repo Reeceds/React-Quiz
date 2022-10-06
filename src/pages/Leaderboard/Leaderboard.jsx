@@ -4,10 +4,15 @@ import { getDocs, collectionGroup } from "firebase/firestore";
 
 export default function Leaderboard() {
     let [scores, setScores] = useState([]);
+    let [tableHeight, setTableHeight] = useState();
 
     useEffect(() => {
         getAllScores();
     }, []);
+
+    useEffect(() => {
+        setTableHeight(document.querySelector("table").offsetHeight);
+    }, [scores]);
 
     // Get all scores from each user
     const getAllScores = async () => {
@@ -30,7 +35,7 @@ export default function Leaderboard() {
 
     return (
         <div>
-            <table>
+            <table style={{ height: tableHeight }}>
                 <thead>
                     <tr>
                         <th>Rank</th>

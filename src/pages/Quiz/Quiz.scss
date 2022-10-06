@@ -62,7 +62,7 @@ body {
         @include tablet {
             height: 240px;
         }
-        
+
         @include mobile {
             height: inherit;
         }
@@ -79,11 +79,9 @@ body {
         }
 
         button {
-
             @include mobile {
                 margin-bottom: 50px;
             }
-
         }
     }
 

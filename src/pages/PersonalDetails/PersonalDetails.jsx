@@ -1,6 +1,7 @@
 import { React, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { Form, Button, Row, Col } from "react-bootstrap";
+import "./PersonalDetails.scss";
 
 import { db } from "../../config/firebase-config";
 import { collection, query, where, getDocs, updateDoc, doc, serverTimestamp } from "firebase/firestore";
@@ -13,6 +14,7 @@ export default function PersonalDetails() {
         alias: "",
     });
     const [validated, setValidated] = useState(false);
+    let [formHeight, setformHeight] = useState();
 
     let navigate = useNavigate();
 
@@ -30,6 +32,10 @@ export default function PersonalDetails() {
             alias: alias,
         });
     }, []);
+
+    useEffect(() => {
+        setformHeight(document.querySelector("form").offsetHeight);
+    }, [details]);
 
     // Updates users alias in db/local storage
     const updateUserAlias = async (userEmail) => {
@@ -72,8 +78,8 @@ export default function PersonalDetails() {
 
     return (
         <Row>
-            <Col lg={4}>
-                <Form noValidate validated={validated} onSubmit={handleSubmit}>
+            <Col lg={6}>
+                <Form noValidate validated={validated} onSubmit={handleSubmit} style={{ height: formHeight }}>
                     <Form.Group className="mb-3">
                         <Form.Label>Email address</Form.Label>
                         <Form.Control type="text" placeholder={details.email || ""} disabled />

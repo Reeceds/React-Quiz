@@ -7,6 +7,22 @@
     font-family: "Noto Sans Mono", monospace;
 }
 
+table {
+    background-color: #fff;
+    position: relative;
+
+    &::before {
+        content: "";
+        position: absolute;
+        height: inherit;
+        width: 100%;
+        background-color: plum;
+        z-index: -1;
+        top: 13px;
+        left: 17px;
+    }
+}
+
 table,
 th,
 td {
