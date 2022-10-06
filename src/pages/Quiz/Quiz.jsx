@@ -195,7 +195,7 @@ export default function Quiz() {
         // Set buttons back to default
         document.querySelectorAll(".js-answer-btn").forEach((button) => {
             button.classList.remove("answer_btn-disable");
-            button.classList.remove("answer_wrong", "answer_correct");
+            button.querySelector('.bottom').classList.remove("answer_wrong", "answer_correct");
         });
 
         // Hide next question button
@@ -215,14 +215,15 @@ export default function Quiz() {
             button.classList.add("answer_btn-disable");
 
             if (button.innerText !== correctAnswer) {
-                button.classList.add("answer_wrong");
+                button.querySelector('.bottom').classList.add("answer_wrong");
             } else {
-                button.classList.add("answer_correct");
+                button.querySelector('.bottom').classList.add("answer_correct");
             }
         });
 
         // Add higlight colour to selected answer
         e.target.classList.add("answer_selected");
+        console.log(e.target)
 
         if (queNum !== 9) {
             // Unhide next question button

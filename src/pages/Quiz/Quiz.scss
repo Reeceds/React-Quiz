@@ -62,12 +62,29 @@ body {
         @include tablet {
             height: 240px;
         }
+        
+        @include mobile {
+            height: inherit;
+        }
     }
 
     &_action-btns-container {
         display: flex;
         justify-content: space-between;
         width: 100%;
+
+        @include mobile {
+            flex-direction: column-reverse;
+            align-items: center;
+        }
+
+        button {
+
+            @include mobile {
+                margin-bottom: 50px;
+            }
+
+        }
     }
 
     &_active-score {
@@ -100,7 +117,7 @@ body {
         align-items: center;
         // max-width: 300px;
         width: 100%;
-        justify-content: center;
+        justify-content: space-between;
         flex-wrap: wrap;
         height: 280px;
 
@@ -110,13 +127,14 @@ body {
     }
 
     &_btn {
-        width: 46%;
-        margin: 2%;
+        width: 48%;
+        // margin-bottom: 2%;
         height: 100px;
 
         @include mobile {
             width: 100%;
             height: unset;
+            margin-bottom: 25px;
         }
 
         &-disable {
@@ -125,13 +143,13 @@ body {
     }
 
     &_correct {
-        background-color: green;
+        background-color: green !important;
         opacity: 0.5;
         color: white;
     }
 
     &_wrong {
-        background-color: red;
+        background-color: red !important;
         opacity: 0.5;
         color: white;
     }
