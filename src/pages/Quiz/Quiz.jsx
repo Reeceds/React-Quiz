@@ -222,8 +222,7 @@ export default function Quiz() {
         });
 
         // Add higlight colour to selected answer
-        e.target.classList.add("answer_selected");
-        console.log(e.target)
+        e.currentTarget.querySelector('.bottom').classList.add("answer_selected");
 
         if (queNum !== 9) {
             // Unhide next question button
@@ -253,14 +252,15 @@ export default function Quiz() {
 
     return (
         <div className="quiz_page">
-            {/* <h1 className="quiz_heading">Quiz</h1> */}
 
             {/* Quiz section */}
             <div className="quiz_section js-quiz-section hide">
-                <h2>Question: {queNum + 1}</h2>
-                <h2 className="quiz_active-score">
-                    Correct: {correctScore} Incorrect: {incorrectScore}
-                </h2>
+                <div className="quiz_score-section">
+                    <h2 className="quiz_question-counter">Question: <span className="quiz_bold-num">{queNum + 1}</span></h2>
+                    <h2 className="quiz_active-score">
+                        Correct: <span className="quiz_bold-num">{correctScore}</span> Incorrect: <span className="quiz_bold-num">{incorrectScore}</span>
+                    </h2>
+                </div>
                 <h3 className="quiz_question">Q: {currentQuestion}</h3>
 
                 <div className="answer_section">

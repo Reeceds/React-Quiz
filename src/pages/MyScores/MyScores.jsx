@@ -36,7 +36,7 @@ export default function MyScores() {
         let arr = [];
 
         userScores.forEach((doc) => {
-            console.log(doc.data());
+            // console.log(doc.data());
             arr.push(doc.data());
             setScores([...arr]);
         });

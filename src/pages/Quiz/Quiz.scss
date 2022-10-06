@@ -5,9 +5,8 @@ body {
 }
 
 .quiz {
-    &_heading {
-        margin-bottom: 50px;
-    }
+
+    
 
     &_page {
         display: flex;
@@ -34,6 +33,39 @@ body {
         button {
             margin-bottom: 50px;
         }
+    }
+
+    &_score-section {
+        display: flex;
+        flex-direction: column;
+        align-items: center;justify-content: center;
+        padding: 50px;
+        margin-bottom: 50px;
+        background-color: #d9d9d9;
+        height: 200px;
+        border: 2px solid #666666;
+        position: relative;
+
+        &::before {
+            content: "";
+            position: absolute;
+            height: inherit;
+            width: 100%;
+            background-color: #a9a9a9;
+            z-index: -1;
+            top: 13px;
+            left: 17px;
+        }
+
+    }
+    
+    &_question-counter {
+        margin-bottom: 20px;
+    }
+
+    &_bold-num {
+        font-weight: 900;
+        font-size: 2.25rem;
     }
 
     &_question {
@@ -83,10 +115,6 @@ body {
                 margin-bottom: 50px;
             }
         }
-    }
-
-    &_active-score {
-        margin-bottom: 50px;
     }
 
     &_end {
