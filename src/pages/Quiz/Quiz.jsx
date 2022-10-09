@@ -256,10 +256,17 @@ export default function Quiz() {
             {/* Quiz section */}
             <div className="quiz_section js-quiz-section hide">
                 <div className="quiz_score-section">
-                    <h2 className="quiz_question-counter">Question: <span className="quiz_bold-num">{queNum + 1}</span></h2>
-                    <h2 className="quiz_active-score">
-                        Correct: <span className="quiz_bold-num">{correctScore}</span> Incorrect: <span className="quiz_bold-num">{incorrectScore}</span>
-                    </h2>
+                    <div className="quiz_score-container">
+                        <h2 className="quiz_question-counter">Question: <span className="quiz_bold-num">{queNum + 1}</span></h2>
+                        <div className="quiz_active-score-section">
+                            <h2 className="quiz_active-score-correct">
+                                Correct: <span className="quiz_bold-num">{correctScore}</span>
+                            </h2>
+                            <h2 className="quiz_active-score-incorrect">
+                                Incorrect: <span className="quiz_bold-num">{incorrectScore}</span>
+                            </h2>
+                        </div>
+                    </div>
                 </div>
                 <h3 className="quiz_question">Q: {currentQuestion}</h3>
 
@@ -285,7 +292,7 @@ export default function Quiz() {
             {/* After quiz options section */}
             <div className="quiz_end-section js-quiz_end-section hide">
                 <h2 className="quiz_end-final-score">
-                    You scored: {correctScore}/{queNum + 1}
+                    You scored: <span className="quiz_bold-num">{correctScore}/{queNum + 1}</span>
                 </h2>
                 <Button className="js-new-quiz-btn" text={"New quiz"} click={() => newQuiz()} />
 

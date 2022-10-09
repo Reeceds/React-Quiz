@@ -6,8 +6,6 @@ body {
 
 .quiz {
 
-    
-
     &_page {
         display: flex;
         flex-direction: column;
@@ -29,34 +27,70 @@ body {
         flex-direction: column;
         justify-content: center;
         align-items: center;
+        width: 100%;
 
         button {
             margin-bottom: 50px;
         }
     }
 
-    &_score-section {
-        display: flex;
-        flex-direction: column;
-        align-items: center;justify-content: center;
-        padding: 50px;
-        margin-bottom: 50px;
-        background-color: #d9d9d9;
-        height: 200px;
-        border: 2px solid #666666;
-        position: relative;
+    &_score {
+        
+        &-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 50px;
+            margin-bottom: 60px;
+            background-color: #d9d9d9;
+            height: 200px;
+            // border: 2px solid #666666;
+            position: relative;
+            width: 90%;
 
-        &::before {
-            content: "";
-            position: absolute;
-            height: inherit;
-            width: 100%;
-            background-color: #a9a9a9;
-            z-index: -1;
-            top: 13px;
-            left: 17px;
+            &::before {
+                content: "";
+                position: absolute;
+                height: inherit;
+                width: 100%;
+                background-color: #a9a9a9;
+                z-index: -1;
+                top: 13px;
+                left: 17px;
+            }
+
         }
 
+        &-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            @include mobile {
+                align-items: flex-start;
+            }
+        }
+
+    }
+
+    &_active-score {
+
+        &-section {
+            display: flex;
+
+            @include mobile {
+                flex-direction: column;
+            }
+        }
+
+        &-incorrect {
+            margin-left: 30px;
+
+            @include mobile {
+                margin-left: 0;
+            }
+        }
     }
     
     &_question-counter {
@@ -123,6 +157,7 @@ body {
             flex-direction: column;
             justify-content: center;
             align-items: center;
+            width: 100%;
 
             button {
                 margin-bottom: 50px;
@@ -130,7 +165,30 @@ body {
         }
 
         &-final-score {
-            margin-bottom: 30px;
+            margin-bottom: 60px;
+            padding: 50px;
+            position: relative;
+            background-color: #d9d9d9;
+            height: 150px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+
+            &::before {
+                content: "";
+                position: absolute;
+                height: inherit;
+                width: 100%;
+                background-color: #a9a9a9;
+                z-index: -1;
+                top: 13px;
+                left: 17px;
+            }
+            
+            @include mobile {
+                width: 90%;
+            }
         }
     }
 }
