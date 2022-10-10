@@ -5,6 +5,8 @@ import { useNavigate } from "react-router-dom";
 import Button from "../../components/Button/Button";
 import AnswerButton from "../../components/AnswerButton/AnswerButton";
 
+import Spinner from 'react-bootstrap/Spinner';
+
 import { auth, provider, db } from "../../config/firebase-config";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { addDoc, collection, query, where, getDocs, serverTimestamp } from "firebase/firestore";
@@ -156,7 +158,7 @@ export default function Quiz() {
         setTimeout(() => {
             document.querySelector(".js-quiz-section").classList.remove("hide");
             document.querySelector(".js-quit-quiz-btn").classList.remove("hide");
-        }, 1000);
+        }, 2000);
     };
 
     // Unhides the quiz if user has entered an alias

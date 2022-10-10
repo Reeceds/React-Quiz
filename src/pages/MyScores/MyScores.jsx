@@ -3,9 +3,12 @@ import { auth, db } from "../../config/firebase-config";
 import { onAuthStateChanged } from "firebase/auth";
 import { collection, query, where, getDocs, doc } from "firebase/firestore";
 
+import Spinner from 'react-bootstrap/Spinner';
+
 export default function MyScores() {
     let [scores, setScores] = useState([]);
     let [tableHeight, setTableHeight] = useState();
+    let [loading, setLoading] = useState(false);
 
     useEffect(() => {
         onAuthStateChanged(auth, (user) => {
@@ -14,10 +17,6 @@ export default function MyScores() {
             }
         });
     }, []);
-
-    useEffect(() => {
-        setTableHeight(document.querySelector("table").offsetHeight);
-    }, [scores]);
 
     // Gets all scores of the logged in user
     const getScores = async (userId) => {
@@ -40,28 +39,35 @@ export default function MyScores() {
             arr.push(doc.data());
             setScores([...arr]);
         });
+        
+        setLoading(true)
+
+        // Set the height of the table
+        setTableHeight(document.querySelector("table").offsetHeight);
     };
 
     return (
         <div>
-            <table style={{ height: tableHeight }}>
-                <thead>
-                    <tr>
-                        <th>Date</th>
-                        <th>Score</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {scores.map((el, i) => {
-                        return (
-                            <tr key={i}>
-                                <td>{el.date}</td>
-                                <td>{el.score}</td>
-                            </tr>
-                        );
-                    })}
-                </tbody>
-            </table>
+            {loading ?            
+                <table style={{ height: tableHeight }}>
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Score</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {scores.map((el, i) => {
+                            return (
+                                <tr key={i}>
+                                    <td>{el.date}</td>
+                                    <td>{el.score}</td>
+                                </tr>
+                            );
+                        })}
+                    </tbody>
+                </table>
+            : <Spinner className="loading-spinner" animation="border" role="status"></Spinner>}
         </div>
     );
 }
