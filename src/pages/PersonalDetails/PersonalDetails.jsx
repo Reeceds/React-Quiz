@@ -1,6 +1,7 @@
 import { React, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { Form, Button, Row, Col } from "react-bootstrap";
+import Button from "../../components/Button/Button";
+import { Form, Row, Col } from "react-bootstrap";
 import "./PersonalDetails.scss";
 
 import { db } from "../../config/firebase-config";
@@ -121,9 +122,10 @@ export default function PersonalDetails() {
                         <Form.Text className="text-muted"> Your quiz alias must be three characters long.</Form.Text>
                     </Form.Group>
 
-                    <Button variant="primary" type="submit">
+                    {/* <Button variant="primary" type="submit">
                         Save
-                    </Button>
+                    </Button> */}
+                    <Button className="submit-btn" text={"Save"} type="submit" />
                 </Form>
             </Col>
         </Row>

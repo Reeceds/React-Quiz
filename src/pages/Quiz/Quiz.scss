@@ -5,7 +5,6 @@ body {
 }
 
 .quiz {
-
     &_page {
         display: flex;
         flex-direction: column;
@@ -35,7 +34,6 @@ body {
     }
 
     &_score {
-        
         &-section {
             display: flex;
             flex-direction: column;
@@ -59,7 +57,6 @@ body {
                 top: 13px;
                 left: 17px;
             }
-
         }
 
         &-container {
@@ -71,11 +68,9 @@ body {
                 align-items: flex-start;
             }
         }
-
     }
 
     &_active-score {
-
         &-section {
             display: flex;
 
@@ -92,7 +87,7 @@ body {
             }
         }
     }
-    
+
     &_question-counter {
         margin-bottom: 20px;
     }
@@ -185,7 +180,7 @@ body {
                 top: 13px;
                 left: 17px;
             }
-            
+
             @include mobile {
                 width: 90%;
             }

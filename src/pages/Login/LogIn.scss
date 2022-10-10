@@ -1,0 +1,44 @@
+@import "../../partials/mixins";
+
+.login {
+    &_btn-section {
+        display: flex;
+        justify-content: flex-start;
+        align-items: flex-start;
+        width: 100%;
+        max-width: 400px;
+        position: relative;
+        background-color: #fff;
+        padding: 30px;
+        border: 1px solid black;
+        height: 300px;
+
+        @include mobile {
+            width: 90%;
+        }
+
+        &::before {
+            content: "";
+            position: absolute;
+            height: inherit;
+            width: 100%;
+            background-color: plum;
+            z-index: -1;
+            top: 13px;
+            left: 17px;
+        }
+    }
+
+    &_google-btn {
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+        border: 1px solid black;
+        padding: 20px 30px;
+        background-color: #ebe9e9;
+    }
+
+    &_google-icon {
+        margin-right: 15px;
+    }
+}

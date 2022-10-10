@@ -195,7 +195,7 @@ export default function Quiz() {
         // Set buttons back to default
         document.querySelectorAll(".js-answer-btn").forEach((button) => {
             button.classList.remove("answer_btn-disable");
-            button.querySelector('.bottom').classList.remove("answer_wrong", "answer_correct");
+            button.querySelector(".bottom").classList.remove("answer_wrong", "answer_correct");
         });
 
         // Hide next question button
@@ -215,14 +215,14 @@ export default function Quiz() {
             button.classList.add("answer_btn-disable");
 
             if (button.innerText !== correctAnswer) {
-                button.querySelector('.bottom').classList.add("answer_wrong");
+                button.querySelector(".bottom").classList.add("answer_wrong");
             } else {
-                button.querySelector('.bottom').classList.add("answer_correct");
+                button.querySelector(".bottom").classList.add("answer_correct");
             }
         });
 
         // Add higlight colour to selected answer
-        e.currentTarget.querySelector('.bottom').classList.add("answer_selected");
+        e.currentTarget.querySelector(".bottom").classList.add("answer_selected");
 
         if (queNum !== 9) {
             // Unhide next question button
@@ -252,12 +252,13 @@ export default function Quiz() {
 
     return (
         <div className="quiz_page">
-
             {/* Quiz section */}
             <div className="quiz_section js-quiz-section hide">
                 <div className="quiz_score-section">
                     <div className="quiz_score-container">
-                        <h2 className="quiz_question-counter">Question: <span className="quiz_bold-num">{queNum + 1}</span></h2>
+                        <h2 className="quiz_question-counter">
+                            Question: <span className="quiz_bold-num">{queNum + 1}</span>
+                        </h2>
                         <div className="quiz_active-score-section">
                             <h2 className="quiz_active-score-correct">
                                 Correct: <span className="quiz_bold-num">{correctScore}</span>
@@ -292,7 +293,10 @@ export default function Quiz() {
             {/* After quiz options section */}
             <div className="quiz_end-section js-quiz_end-section hide">
                 <h2 className="quiz_end-final-score">
-                    You scored: <span className="quiz_bold-num">{correctScore}/{queNum + 1}</span>
+                    You scored:{" "}
+                    <span className="quiz_bold-num">
+                        {correctScore}/{queNum + 1}
+                    </span>
                 </h2>
                 <Button className="js-new-quiz-btn" text={"New quiz"} click={() => newQuiz()} />
 

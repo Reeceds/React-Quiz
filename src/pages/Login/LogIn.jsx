@@ -1,8 +1,12 @@
 import React from "react";
+import "./LogIn.scss";
 import { useNavigate } from "react-router-dom";
 import { auth, provider, db } from "../../config/firebase-config";
 import { signInWithPopup } from "firebase/auth";
 import { addDoc, collection, query, where, getDocs } from "firebase/firestore";
+
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faGoogle } from "@fortawesome/free-brands-svg-icons";
 
 export default function LogIn({ setIsAuth }) {
     let navigate = useNavigate();
@@ -81,5 +85,12 @@ export default function LogIn({ setIsAuth }) {
             });
     };
 
-    return <button onClick={loginWithGoogle}>Login with Google</button>;
+    return (
+        <div className="login_btn-section">
+            <div onClick={loginWithGoogle} className="login_google-btn">
+                <FontAwesomeIcon className="login_google-icon" icon={faGoogle} color="#7c6bca" size="2x" />
+                <span className="">Login with Google</span>
+            </div>
+        </div>
+    );
 }
