@@ -3,7 +3,7 @@ import { auth, db } from "../../config/firebase-config";
 import { onAuthStateChanged } from "firebase/auth";
 import { collection, query, where, getDocs, doc } from "firebase/firestore";
 
-import Spinner from 'react-bootstrap/Spinner';
+import Spinner from "react-bootstrap/Spinner";
 
 export default function MyScores() {
     let [scores, setScores] = useState([]);
@@ -39,8 +39,8 @@ export default function MyScores() {
             arr.push(doc.data());
             setScores([...arr]);
         });
-        
-        setLoading(true)
+
+        setLoading(true);
 
         // Set the height of the table
         setTableHeight(document.querySelector("table").offsetHeight);
@@ -48,7 +48,7 @@ export default function MyScores() {
 
     return (
         <div>
-            {loading ?            
+            {loading ? (
                 <table style={{ height: tableHeight }}>
                     <thead>
                         <tr>
@@ -67,7 +67,9 @@ export default function MyScores() {
                         })}
                     </tbody>
                 </table>
-            : <Spinner className="loading-spinner" animation="border" role="status"></Spinner>}
+            ) : (
+                <Spinner className="loading-spinner" animation="border" role="status"></Spinner>
+            )}
         </div>
     );
 }

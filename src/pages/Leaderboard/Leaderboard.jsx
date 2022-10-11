@@ -2,7 +2,7 @@ import { React, useState, useEffect } from "react";
 import { db } from "../../config/firebase-config";
 import { getDocs, collectionGroup } from "firebase/firestore";
 
-import Spinner from 'react-bootstrap/Spinner';
+import Spinner from "react-bootstrap/Spinner";
 
 export default function Leaderboard() {
     let [scores, setScores] = useState([]);
@@ -31,7 +31,7 @@ export default function Leaderboard() {
 
         setScores([...arr]);
 
-        setLoading(true)
+        setLoading(true);
 
         // Set the height of the table
         setTableHeight(document.querySelector("table").offsetHeight);
@@ -39,7 +39,7 @@ export default function Leaderboard() {
 
     return (
         <div>
-            {loading ?  
+            {loading ? (
                 <table style={{ height: tableHeight }}>
                     <thead>
                         <tr>
@@ -62,7 +62,9 @@ export default function Leaderboard() {
                         })}
                     </tbody>
                 </table>
-                : <Spinner className="loading-spinner" animation="border" role="status"></Spinner>}
+            ) : (
+                <Spinner className="loading-spinner" animation="border" role="status"></Spinner>
+            )}
         </div>
     );
 }
