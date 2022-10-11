@@ -59,12 +59,13 @@
 .button:hover .bottom {
     left: 0;
     top: 0;
-    background-color: #fff;
+    background-color: transparent;
+    // background-color: #fff;
 }
 
-.button:hover .top .label {
-    color: #00e9ff;
-}
+// .button:hover .top .label {
+//     color: #00e9ff;
+// }
 
 .button-border {
     position: absolute;

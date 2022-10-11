@@ -7,6 +7,12 @@
     font-family: "Noto Sans Mono", monospace;
 }
 
+body {
+    background-color: #ffecc9;
+    background-image: url('../assets/images/quiz-background.svg');
+    background-size: 100%;
+}
+
 table {
     background-color: #fff;
     position: relative;

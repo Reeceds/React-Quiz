@@ -67,7 +67,7 @@ export default function Header({ setIsAuth }) {
                 <Container>
                     <div className=" main-nav_desktop-container">
                         <Link onClick={() => closeMobileNav()} className="main-nav_desktop-logo" to="/">
-                            Quiz
+                            The Quiz Of Everything
                         </Link>
                         {localStorage.getItem("isAuth") === null ? (
                             <nav>
