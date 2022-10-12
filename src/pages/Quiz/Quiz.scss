@@ -14,11 +14,11 @@
         align-items: center;
         width: 100%;
         max-width: 900px;
-        margin-bottom: 50px;
+        margin-bottom: 100px;
     }
 
     &_landing {
-            &-section {
+        &-section {
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -43,7 +43,7 @@
             position: relative;
             text-align: center;
             font-weight: 300;
-            
+
             @include mobile {
                 width: 90%;
             }
@@ -251,17 +251,17 @@
 
     &_correct {
         background-color: green !important;
-        opacity: 0.5;
         color: white;
+        filter: contrast(0.2);
     }
 
     &_wrong {
         background-color: red !important;
-        opacity: 0.5;
         color: white;
+        filter: contrast(0.2);
     }
 
     &_selected {
-        opacity: 1 !important;
+        filter: none;
     }
 }

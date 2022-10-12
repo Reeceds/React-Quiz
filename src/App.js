@@ -17,19 +17,22 @@ function App() {
     const [isAuth, setIsAuth] = useState(false);
 
     return (
-        <Router>
-            <Header setIsAuth={setIsAuth} />
-            <Container className="main-section">
-                <Routes>
-                    <Route path="/" element={<Quiz />} />
-                    <Route path="/login" element={<LogIn setIsAuth={setIsAuth} />} />
-                    <Route path="/personalDetails" element={<PersonalDetails />} />
-                    <Route path="/myScores" element={<MyScores />} />
-                    <Route path="/leaderboard" element={<Leaderboard />} />
-                </Routes>
-            </Container>
-            {/* <Footer /> */}
-        </Router>
+        <>
+            <div className="static-background"> </div>
+            <Router>
+                <Header setIsAuth={setIsAuth} />
+                <Container className="main-section">
+                    <Routes>
+                        <Route path="/" element={<Quiz />} />
+                        <Route path="/login" element={<LogIn setIsAuth={setIsAuth} />} />
+                        <Route path="/personalDetails" element={<PersonalDetails />} />
+                        <Route path="/myScores" element={<MyScores />} />
+                        <Route path="/leaderboard" element={<Leaderboard />} />
+                    </Routes>
+                </Container>
+                {/* <Footer /> */}
+            </Router>
+        </>
     );
 }
 
