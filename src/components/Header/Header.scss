@@ -8,8 +8,8 @@
         &-container {
             display: flex;
             justify-content: space-between;
-            padding-top: 1.5rem;
-            padding-bottom: 1.5rem;
+            padding-top: 1.25rem;
+            padding-bottom: 1.25rem;
         }
 
         &-logo {
@@ -37,6 +37,7 @@
                 text-decoration: none;
                 cursor: pointer;
                 font-weight: 500;
+                font-size: 0.9rem;
             }
         }
     }
