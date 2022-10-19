@@ -40,33 +40,48 @@ export default function Leaderboard() {
     return (
         <div>
             {loading ? (
-                <table style={{ height: tableHeight }}>
-                    <thead>
-                        <tr>
-                            <th colSpan="4">Top 10</th>
-                        </tr>
-                        <tr>
-                            <th>Rank</th>
-                            <th>Name</th>
-                            <th>Date</th>
-                            <th>Score</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {scores.map((el, i) => {
-                            if (i <= 9) {
-                                return (
-                                    <tr key={i}>
-                                        <td>{i + 1}</td>
-                                        <td>{el.alias}</td>
-                                        <td>{el.date}</td>
-                                        <td>{el.score}</td>
-                                    </tr>
-                                );
-                            }
-                        })}
-                    </tbody>
-                </table>
+                scores.length > 0 ? (
+                    <table style={{ height: tableHeight }}>
+                        <thead>
+                            <tr>
+                                <th colSpan="4">Top 10</th>
+                            </tr>
+                            <tr>
+                                <th>Rank</th>
+                                <th>Name</th>
+                                <th>Date</th>
+                                <th>Score</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {scores.map((el, i) => {
+                                if (i <= 9) {
+                                    return (
+                                        <tr key={i}>
+                                            <td>{i + 1}</td>
+                                            <td>{el.alias}</td>
+                                            <td>{el.date}</td>
+                                            <td>{el.score}</td>
+                                        </tr>
+                                    );
+                                }
+                            })}
+                        </tbody>
+                    </table>
+                ) : (
+                    <table style={{ height: tableHeight }}>
+                        <thead>
+                            <tr>
+                                <th colSpan="2">Top 10</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>No scores available</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                )
             ) : (
                 <Spinner className="loading-spinner" animation="border" role="status"></Spinner>
             )}
