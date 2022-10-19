@@ -28,6 +28,8 @@ export default function LogIn({ setIsAuth }) {
                 email: userEmail,
                 alias: "",
             });
+
+            navigate("/personalDetails");
         }
     };
 
@@ -55,8 +57,6 @@ export default function LogIn({ setIsAuth }) {
 
         signInWithPopup(auth, provider)
             .then((result) => {
-                // console.log(result)
-
                 // Variables of users details
                 let id = result.user.uid;
                 let name = result.user.displayName;

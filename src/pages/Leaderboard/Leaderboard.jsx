@@ -43,6 +43,9 @@ export default function Leaderboard() {
                 <table style={{ height: tableHeight }}>
                     <thead>
                         <tr>
+                            <th colSpan="4">Top 10</th>
+                        </tr>
+                        <tr>
                             <th>Rank</th>
                             <th>Name</th>
                             <th>Date</th>
@@ -51,14 +54,16 @@ export default function Leaderboard() {
                     </thead>
                     <tbody>
                         {scores.map((el, i) => {
-                            return (
-                                <tr key={i}>
-                                    <td>{i + 1}</td>
-                                    <td>{el.alias}</td>
-                                    <td>{el.date}</td>
-                                    <td>{el.score}</td>
-                                </tr>
-                            );
+                            if (i <= 9) {
+                                return (
+                                    <tr key={i}>
+                                        <td>{i + 1}</td>
+                                        <td>{el.alias}</td>
+                                        <td>{el.date}</td>
+                                        <td>{el.score}</td>
+                                    </tr>
+                                );
+                            }
                         })}
                     </tbody>
                 </table>

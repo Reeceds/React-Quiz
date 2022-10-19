@@ -45,7 +45,7 @@ export default function Quiz() {
 
         getData().then((response) => {
             setData(response.results);
-            console.log(response.results);
+            // console.log(response.results);
         });
     }, [runApi]);
 
@@ -309,7 +309,9 @@ export default function Quiz() {
 
             {/* Quiz landing section */}
             <div className="quiz_landing-section js-quiz_landing-section">
-                <h1 className="quiz_landing-header">The Quiz Of <br/> Everything</h1>
+                <h1 className="quiz_landing-header">
+                    The Quiz Of <br /> Everything
+                </h1>
                 <Button className="js-start-btn" text={"Start quiz"} click={() => startQuiz()} />
 
                 {userAuth === null ? (

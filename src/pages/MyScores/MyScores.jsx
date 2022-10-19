@@ -52,18 +52,23 @@ export default function MyScores() {
                 <table style={{ height: tableHeight }}>
                     <thead>
                         <tr>
+                            <th colSpan="2">Top 10</th>
+                        </tr>
+                        <tr>
                             <th>Date</th>
                             <th>Score</th>
                         </tr>
                     </thead>
                     <tbody>
                         {scores.map((el, i) => {
-                            return (
-                                <tr key={i}>
-                                    <td>{el.date}</td>
-                                    <td>{el.score}</td>
-                                </tr>
-                            );
+                            if (i <= 9) {
+                                return (
+                                    <tr key={i}>
+                                        <td>{el.date}</td>
+                                        <td>{el.score}</td>
+                                    </tr>
+                                );
+                            }
                         })}
                     </tbody>
                 </table>
