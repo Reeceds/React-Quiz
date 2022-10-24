@@ -11,7 +11,6 @@
     &_section {
         display: flex;
         flex-direction: column;
-        align-items: center;
         width: 100%;
         max-width: 900px;
         margin-bottom: 100px;
@@ -39,10 +38,9 @@
             margin-bottom: 60px;
             background-color: #d9d9d9;
             height: 200px;
-            // border: 2px solid #666666;
             position: relative;
             text-align: center;
-            font-weight: 300;
+            font-weight: 500;
 
             @include mobile {
                 width: 90%;
@@ -64,16 +62,21 @@
     &_score {
         &-section {
             display: flex;
-            flex-direction: column;
             align-items: center;
             justify-content: center;
-            padding: 50px;
-            margin-bottom: 60px;
+            padding: 25px;
+            margin-bottom: 40px;
             background-color: #d9d9d9;
-            height: 200px;
-            // border: 2px solid #666666;
+            height: 75px;
             position: relative;
-            width: 90%;
+            width: 100%;
+
+            @include mobile {
+                flex-direction: column;
+                align-items: flex-start;
+                height: 160px;
+                width: 98%;
+            }
 
             &::before {
                 content: "";
@@ -82,15 +85,24 @@
                 width: 100%;
                 background-color: #a9a9a9;
                 z-index: -1;
-                top: 13px;
-                left: 17px;
+                top: 8px;
+                left: 12px;
+            }
+
+            h2 {
+                font-size: 1.4rem;
+                margin-bottom: 0;
+                margin-right: 30px;
+
+                @include mobile {
+                    margin-bottom: 10px !important;
+                }
             }
         }
 
         &-container {
             display: flex;
-            flex-direction: column;
-            align-items: center;
+            font-size: 1.5rem;
 
             @include mobile {
                 align-items: flex-start;
@@ -98,42 +110,18 @@
         }
     }
 
-    &_active-score {
-        &-section {
-            display: flex;
-
-            @include mobile {
-                flex-direction: column;
-            }
-        }
-
-        &-incorrect {
-            margin-left: 30px;
-
-            @include mobile {
-                margin-left: 0;
-            }
-        }
-    }
-
-    &_question-counter {
-        margin-bottom: 20px;
-    }
-
     &_bold-num {
         font-weight: 900;
-        font-size: 2.25rem;
     }
 
     &_question {
-        height: 200px;
+        height: 130px;
         width: 100%;
-        // max-width: 900px;
-        margin-bottom: 50px;
-        font-size: 1.5rem;
+        margin-bottom: 40px;
+        font-size: 1.1rem;
         line-height: 1.4;
         border: 2px solid black;
-        padding: 50px;
+        padding: 25px;
         position: relative;
         background-color: #fff;
 
@@ -144,16 +132,21 @@
             width: 100%;
             background-color: plum;
             z-index: -1;
-            top: 13px;
-            left: 17px;
+            top: 8px;
+            left: 12px;
         }
 
         @include tablet {
-            height: 240px;
+            height: 155px;
         }
 
         @include mobile {
             height: inherit;
+            width: 100%;
+        }
+
+        &-counter {
+            margin-right: 60px !important;
         }
     }
 
@@ -169,7 +162,7 @@
 
         button {
             @include mobile {
-                margin-bottom: 50px;
+                margin-bottom: 30px;
             }
         }
     }
@@ -219,14 +212,11 @@
 .answer {
     &_section {
         display: flex;
-        // flex-direction: column;
-        margin-bottom: 50px;
+        margin-bottom: 20px;
         align-items: center;
-        // max-width: 300px;
         width: 100%;
         justify-content: space-between;
         flex-wrap: wrap;
-        height: 280px;
 
         @include mobile {
             height: unset;
@@ -234,14 +224,12 @@
     }
 
     &_btn {
-        width: 48%;
-        // margin-bottom: 2%;
-        height: 100px;
+        width: 100%;
+        margin-bottom: 20px;
 
         @include mobile {
-            width: 100%;
+            width: 99%;
             height: unset;
-            margin-bottom: 25px;
         }
 
         &-disable {

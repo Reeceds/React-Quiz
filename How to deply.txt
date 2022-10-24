@@ -1,0 +1,35 @@
+If using database
+- Create .env file in project folder at top level (outside src folder)
+- Add environment variables to .env file for sensetive database detaails (e.g. (var name: REACT_APP_API_KEY=)  -  (sensetive id: AIzaSyAfdKc9Ki_YZS-N2mnUmTFEK-Ge0_j_qHo (without "" marks))):
+    REACT_APP_API_KEY=AIzaSyAfdKc9Ki_YZS-N2mnUmTFEK-Ge0_j_qHo
+    REACT_APP_AUTH_DOMAIN=quiz-b31e2.firebaseapp.com
+    REACT_APP_PROJECT_ID=quiz-b31e2
+    REACT_APP_STORAGE_BUCKET=quiz-b31e2.appspot.com
+    REACT_APP_MESSAGING_SENDER_ID=1008361483573
+    REACT_APP_APP_ID=1:1008361483573:web:3dfaec3532ab7f3ceeb07c
+    REACT_APP_MEASUREMENTID=G-3KVLS9W4DY
+
+- Add variables to config file using process.env. e.g. (apiKey: process.env.REACT_APP_API_KEY,):
+    const firebaseConfig = {
+        apiKey: process.env.REACT_APP_API_KEY,
+        authDomain: process.env.REACT_APP_AUTH_DOMAIN,
+        projectId: process.env.REACT_APP_PROJECT_ID,
+        storageBucket: process.env.REACT_APP_STORAGE_BUCKET,
+        messagingSenderId: process.env.REACT_APP_MESSAGING_SENDER_ID,
+        appId: process.env.REACT_APP_APP_ID,
+        measurementId: process.env.REACT_APP_MEASUREMENTID,
+    };
+
+- Add env vars to the hosting site e.g. Heroku
+- npm i serve
+- Change package.json start script to "serve -s build" and use 'npm run dev' to run project locally:
+    "scripts": {
+        "dev": "react-scripts start",
+        "start": "serve -s build",
+        "build": "react-scripts build",
+        "test": "react-scripts test",
+        "eject": "react-scripts eject"
+    },
+    
+- Deploy site
+- Change database host 'Authorised domain' to new live deploy url e.g. firestore > Authentication > settings > Authorized domains > Add domain: http://the-quiz-of-everything.herokuapp.com/

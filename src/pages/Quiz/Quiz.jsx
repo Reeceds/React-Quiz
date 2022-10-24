@@ -257,19 +257,15 @@ export default function Quiz() {
             {/* Quiz section */}
             <div className="quiz_section js-quiz-section hide">
                 <div className="quiz_score-section">
-                    <div className="quiz_score-container">
-                        <h2 className="quiz_question-counter">
-                            Question: <span className="quiz_bold-num">{queNum + 1}</span>
-                        </h2>
-                        <div className="quiz_active-score-section">
-                            <h2 className="quiz_active-score-correct">
-                                Correct: <span className="quiz_bold-num">{correctScore}</span>
-                            </h2>
-                            <h2 className="quiz_active-score-incorrect">
-                                Incorrect: <span className="quiz_bold-num">{incorrectScore}</span>
-                            </h2>
-                        </div>
-                    </div>
+                    <h2 className="quiz_question-counter">
+                        Question: <span className="quiz_bold-num">{queNum + 1}</span>
+                    </h2>
+                    <h2>
+                        Correct: <span className="quiz_bold-num">{correctScore}</span>
+                    </h2>
+                    <h2>
+                        Incorrect: <span className="quiz_bold-num">{incorrectScore}</span>
+                    </h2>
                 </div>
                 <h3 className="quiz_question">Q: {currentQuestion}</h3>
 
