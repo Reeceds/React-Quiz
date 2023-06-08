@@ -1,6 +1,6 @@
 If using database
 - Create .env file in project folder at top level (outside src folder)
-- Add environment variables to .env file for sensetive database detaails (e.g. (var name: REACT_APP_API_KEY=)  -  (sensetive id: AIzaSyAfdKc9Ki_YZS-N2mnUmTFEK-Ge0_j_qHo (without "" marks))):
+- Add environment variables to .env file for sensetive database detaails (e.g. (var name: REACT_APP_API_KEY=)  -  (sensetive id: AIzaS... (without "" marks))):
     REACT_APP_API_KEY=xxxxxxxxx
     REACT_APP_AUTH_DOMAIN=qxxxxxxxxx
     REACT_APP_PROJECT_ID=xxxxxxxxx
